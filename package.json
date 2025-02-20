@@ -1,0 +1,47 @@
+{
+    "name": "ToDoApp",
+    "version": "1.0.0",
+    "private": true, 
+    "description": "Monorepo for frontend and backend",
+    "workspaces": [
+      "frontend",
+      "backend"
+    ],
+    "scripts": {
+      "dev:frontend": "npm run dev --workspace=frontend",  
+      "build:frontend": "npm run build --workspace=frontend", 
+      "test:frontend": "npm run test --workspace=frontend",  
+      "lint:frontend": "npm run lint --workspace=frontend",  
+      "format:frontend": "npm run format --workspace=frontend", 
+  
+      "dev:backend": "npm run dev --workspace=backend",   
+      "start:backend": "npm run start --workspace=backend", 
+      "build:backend": "npm run build --workspace=backend", 
+      "test:backend": "npm run test --workspace=backend",  
+      "lint:backend": "npm run lint --workspace=backend",  
+      "format:backend": "npm run format --workspace=backend", 
+  
+      "test": "npm run test:frontend && npm run test:backend",
+      "lint": "npm run lint:frontend && npm run lint:backend", 
+      "format": "npm run format:frontend && npm run format:backend", 
+      "prepare": "husky install"
+    },
+    "devDependencies": {
+    "husky": "^9.0.11",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.0"
+    },
+    "husky": {
+        "hooks": {
+        "pre-commit": "npm run test && npm run lint && npm run format"
+        }
+  }
+
+  }
+  

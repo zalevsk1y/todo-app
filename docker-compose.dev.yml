@@ -1,0 +1,15 @@
+
+services:
+  mongodb:
+    image: mongo:latest # Or a specific version like mongo:7.0
+    ports:
+      - "27017:27017" # MongoDB port for local access
+    volumes:
+      - mongodb_dev_data:/data/db # Volume for MongoDB dev data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME_DEVELOPMENT} # Dev MongoDB root username
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD_DEVELOPMENT} # Dev MongoDB root password
+    restart: unless-stopped
+
+volumes:
+  mongodb_dev_data:

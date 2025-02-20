@@ -1,0 +1,32 @@
+
+services:
+  backend-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production # Build only the production stage
+    ports:
+      - "${PORT}:${PORT}" 
+    environment:
+      PORT: ${PORT}
+      MONGODB_HOST_PRODUCTION: ${MONGODB_HOST_PRODUCTION}
+      JWT_SECRET: ${JWT_SECRET_PRODUCTION}
+      NODE_ENV: production
+      MONGO_DB_NAME: ${MONGO_DB_NAME_PRODUCTION}
+      MONGO_USERNAME: ${MONGO_USERNAME_PRODUCTION}
+      MONGO_PASSWORD: ${MONGO_PASSWORD_PRODUCTION}
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME_PRODUCTION}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD_PRODUCTION}
+
+volumes:
+  mongodb_data:

@@ -1,0 +1,8 @@
+{
+    "extends": "./tsconfig.json", // Extend your base config to avoid repetition
+    "compilerOptions": {
+      "sourceMap": true, // Enable source maps for development
+      "pretty": true // Keep pretty for development, can be removed in prod if size matters
+    }
+  }
+  

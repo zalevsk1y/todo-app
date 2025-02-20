@@ -1,0 +1,8 @@
+{
+    "extends": "./tsconfig.json", // Extend your base config
+    "compilerOptions": {
+      "sourceMap": false, // Disable source maps for production (smaller output, less info leak)
+      "pretty": false // Can remove pretty in production to potentially slightly reduce build output size
+    }
+  }
+  
